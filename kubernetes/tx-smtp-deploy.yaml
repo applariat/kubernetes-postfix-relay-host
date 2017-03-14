@@ -1,0 +1,33 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tx-smtp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tx-smtp
+    spec:
+      containers:
+        - name: tx-smtp
+          image: applariat/tx-smtp
+          env:
+            - name: TX_SMTP_RELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: global-env
+                  key: tx-smtp-relay-host
+            - name: TX_SMTP_RELAY_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: global-env
+                  key: tx-smtp-relay-username
+            - name: TX_SMTP_RELAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: global-env
+                  key: tx-smtp-relay-password
+          ports:
+            - containerPort: 25

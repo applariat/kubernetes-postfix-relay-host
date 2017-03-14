@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tx-smtp
+spec:
+  ports:
+  - port: 25
+    targetPort: 25
+    protocol: TCP
+  selector:
+    app: tx-smtp

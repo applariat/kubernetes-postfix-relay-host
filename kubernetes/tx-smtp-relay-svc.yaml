@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tx-smtp
+  name: tx-smtp-relay
 spec:
   ports:
   - port: 25
     targetPort: 25
     protocol: TCP
   selector:
-    app: tx-smtp
+    app: tx-smtp-relay

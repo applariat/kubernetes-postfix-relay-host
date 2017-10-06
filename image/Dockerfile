@@ -6,7 +6,7 @@ RUN apk add --no-cache postfix rsyslog supervisor \
 
 COPY . /
 
-EXPOSE 25
+EXPOSE 587
 
 ENTRYPOINT [ "/tx-smtp-relay.sh" ]
 

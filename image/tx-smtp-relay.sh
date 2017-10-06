@@ -9,6 +9,9 @@ TX_SMTP_RELAY_PASSWORD=${TX_SMTP_RELAY_PASSWORD?Missing env var TX_SMTP_RELAY_PA
 echo '/^.*sink\.sendgrid\.net/ DISCARD' > /etc/postfix/header_checks_sg || exit 1
 postconf 'header_checks = regexp:/etc/postfix/header_checks_sg' || exit 1
 
+# enable port 587
+postconf -M submission/inet="submission inet n - n - - smtpd"
+
 # handle sasl
 echo "${TX_SMTP_RELAY_HOST} ${TX_SMTP_RELAY_USERNAME}:${TX_SMTP_RELAY_PASSWORD}" > /etc/postfix/sasl_passwd || exit 1
 postmap /etc/postfix/sasl_passwd || exit 1

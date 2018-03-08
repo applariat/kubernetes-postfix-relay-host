@@ -28,4 +28,10 @@ postconf 'smtputf8_enable = no' || exit 1
 # This makes sure the message id is set. If this is set to no dkim=fail will happen.
 postconf 'always_add_missing_headers = yes' || exit 1
 
+# TLS
+postconf "smtp_use_tls = yes" || exit 1
+postconf "smtp_tls_security_level = encrypt" || exit 1
+postconf "smtp_tls_note_starttls_offer = yes" || exit 1
+postconf -e 'smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt' || exit 1
+
 /usr/bin/supervisord -n

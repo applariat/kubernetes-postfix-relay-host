@@ -5,6 +5,12 @@ TX_SMTP_RELAY_MYHOSTNAME=${TX_SMTP_RELAY_MYHOSTNAME?Missing env var TX_SMTP_RELA
 TX_SMTP_RELAY_USERNAME=${TX_SMTP_RELAY_USERNAME?Missing env var TX_SMTP_RELAY_USERNAME}
 TX_SMTP_RELAY_PASSWORD=${TX_SMTP_RELAY_PASSWORD?Missing env var TX_SMTP_RELAY_PASSWORD}
 
+# Port is set to 25 by default unless specifically set
+TX_SMTP_RELAY_PORT=${TX_SMTP_RELAY_PORT:-25}
+
+# Put host/port into postconf format
+TX_SMTP_RELAY_HOST="[${TX_SMTP_RELAY_HOST}]:${TX_SMTP_RELAY_PORT}"
+
 
 # handle sasl
 echo "${TX_SMTP_RELAY_HOST} ${TX_SMTP_RELAY_USERNAME}:${TX_SMTP_RELAY_PASSWORD}" > /etc/postfix/sasl_passwd || exit 1

@@ -11,13 +11,17 @@ We needed a simple docker image that can be configured with env vars. Also, the 
 Run on docker
 ```
 docker run --rm -it -p 2525:25 \
-	-e TX_SMTP_RELAY_HOST="[smtp.sendgrid.net]:587" \
+	-e TX_SMTP_RELAY_HOST="smtp.sendgrid.net" \
+	-e TX_SMTP_RELAY_PORT=25 \
 	-e TX_SMTP_RELAY_MYHOSTNAME=tx-smtp-relay.yourhost.com \
 	-e TX_SMTP_RELAY_USERNAME=username \
 	-e TX_SMTP_RELAY_PASSWORD=password \
 	applariat/tx-smtp-relay
 
 ```
+
+Note that all parameters except TX_SMTP_RELAY_PORT are required.  The default value for the port is 25.
+
 Send a test message
 <pre>
 <b>telnet localhost 2525</b>

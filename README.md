@@ -1,11 +1,11 @@
 # kubernetes-postfix-relay-host
-A SMTP relay host for transactional based emails from within a k8 cluster.
+A SMTP relay host for transactional based emails from within a k8s cluster.
  
 ## Overview
 This repository contains Kubernetes config files and a docker image to easily set up a SMTP relay for services such as SendGrid.
 
 ## Background
-We needed a simple docker image that can be configured with env vars. Also, the functionality is easily overridded by providing an alternate init script. 
+We needed a simple docker image that can be configured with env vars. Also, the functionality is easily overridden by providing an alternate init script. 
 
 # Quickstart
 Run on docker

@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.14.3
 MAINTAINER Chris Dornsife <chris@applariat.com>
 
 RUN apk add --no-cache ca-certificates postfix rsyslog supervisor \
